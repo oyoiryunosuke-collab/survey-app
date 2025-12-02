@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Morphing Survey</title>
+<style>
+  body { text-align: center; font-family: sans-serif; }
+  img { width: 350px; height: auto; }
+</style>
+</head>
+<body>
+
+<h2>どの形がいちばん好みですか？</h2>
+
+<p>スライダーを動かして、好きな形を選んでください</p>
+
+<img id="morphImage" src="morph_frames/morph_000.png">
+
+<br><br>
+
+<input type="range" id="slider" min="0" max="100" value="0">
+
+<p>選択中： <span id="alphaValue">0</span>%</p>
+
+<button onclick="submitAnswer()">回答を送信</button>
+
+<script>
+const slider = document.getElementById("slider");
+const img = document.getElementById("morphImage");
+const alphaText = document.getElementById("alphaValue");
+
+slider.oninput = () => {
+    alphaText.textContent = slider.value;
+    img.src = `morph_frames/morph_${String(slider.value).padStart(3, "0")}.png`;
+};
+
+function submitAnswer() {
+    const alpha = slider.value;
+    fetch("YOUR_GAS_WEBHOOK_URL", {
+        method: "POST",
+        body: JSON.stringify({ alpha: alpha }),
+        headers: { "Content-Type": "application/json" }
+    }).then(() => {
+        alert("回答ありがとうございました！");
+    });
+}
+</script>
+
+</body>
+</html>
