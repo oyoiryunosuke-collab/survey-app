@@ -29,19 +29,37 @@ const slider = document.getElementById("slider");
 const img = document.getElementById("morphImage");
 const alphaText = document.getElementById("alphaValue");
 
+// スライダー動作
 slider.oninput = () => {
     alphaText.textContent = slider.value;
     img.src = `morph_frames/morph_${String(slider.value).padStart(3, "0")}.png`;
 };
 
+
+// ===============================
+// ★ CORS 完全回避版 submitAnswer()
+// ===============================
 function submitAnswer() {
     const alpha = slider.value;
-    fetch("https://script.google.com/macros/s/AKfycbyMMqW5XL5QRNul3iNcxpdCQ0PxzXY-KoVZVTrfuHdY16PKYuh5oSdefcu5-HnOxlfwVQ/exec", {
+
+    // FormData（OPTIONS を発生させない仕組み）
+    const formData = new FormData();
+    formData.append("alpha", alpha);
+
+    fetch("https://script.google.com/macros/s/AKfycbwspb-H8yy1aTzn9OVBhVFoPKQXv2P668JVnN4ldmad1pf8Re_jfsQStDAxjLFLtR5JxQ/exec", {
         method: "POST",
-        body: JSON.stringify({ alpha: alpha }),
-        headers: { "Content-Type": "application/json" }
-    }).then(() => {
+        body: formData
+        // ⚠ Content-Type を絶対に指定しないこと
+        // → 指定すると OPTIONS が発生して CORS で死ぬ
+    })
+    .then(r => r.text())
+    .then(text => {
         alert("回答ありがとうございました！");
+        console.log("Server response:", text);
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("送信に失敗しました");
     });
 }
 </script>
