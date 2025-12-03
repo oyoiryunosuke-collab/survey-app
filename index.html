@@ -36,7 +36,7 @@ slider.oninput = () => {
 
 function submitAnswer() {
     const alpha = slider.value;
-    fetch("https://script.google.com/macros/s/AKfycbwrKIrlfbhqB1omc-iExtkEp6gilH7kEik-51TODCwRk_uAwqyvW5z_tdBG1TwjxGHW/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbxorR295t7iuHTgWp0xkyaXCcrq5kOLjN0LHP5y_iWoeuE9MJCEnLWI4ALrhcpmdI15/exec", {
         method: "POST",
         body: JSON.stringify({ alpha: alpha }),
         headers: { "Content-Type": "application/json" }
