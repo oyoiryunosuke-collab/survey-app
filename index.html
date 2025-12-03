@@ -36,7 +36,7 @@ slider.oninput = () => {
 
 function submitAnswer() {
     const alpha = slider.value;
-    fetch("YOUR_GAS_WEBHOOK_URL", {
+    fetch("https://script.google.com/macros/s/AKfycbwrKIrlfbhqB1omc-iExtkEp6gilH7kEik-51TODCwRk_uAwqyvW5z_tdBG1TwjxGHW/exec", {
         method: "POST",
         body: JSON.stringify({ alpha: alpha }),
         headers: { "Content-Type": "application/json" }
