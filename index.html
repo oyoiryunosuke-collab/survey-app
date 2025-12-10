@@ -35,32 +35,29 @@ slider.oninput = () => {
     img.src = `morph_frames/morph_${String(slider.value).padStart(3, "0")}.png`;
 };
 
-
 // ===============================
-// ★ CORS 完全回避版 submitAnswer()
+// ★ Googleフォームへ直接送信（CORS 100%回避）
 // ===============================
 function submitAnswer() {
     const alpha = slider.value;
 
-    // FormData（OPTIONS を発生させない仕組み）
-    const formData = new FormData();
-    formData.append("alpha", alpha);
+    // ★ あなたの Google フォームの formResponse URL
+    const formUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLScZVpW-JOWAQhF7QFdypK_TjTjDm3vWAptT5UxrAwVLUJ8b2A/formResponse";
 
-    fetch("https://script.google.com/macros/s/AKfycby8I48rls5eHoCvs3HBG8jJTVS3uXZqxUraQxjclFURMRGnE_eQU1twVE_F_4SkFtwVlw/exec", {
+    const formData = new FormData();
+
+    // ★ あなたのフォームの entry ID（alpha を送る欄）
+    formData.append("entry.743902396", alpha);
+
+    // ★ Googleフォームは CORS 無視なので no-cors でOK
+    fetch(formUrl, {
         method: "POST",
+        mode: "no-cors",
         body: formData
-        // ⚠ Content-Type を絶対に指定しないこと
-        // → 指定すると OPTIONS が発生して CORS で死ぬ
-    })
-    .then(r => r.text())
-    .then(text => {
-        alert("回答ありがとうございました！");
-        console.log("Server response:", text);
-    })
-    .catch(err => {
-        console.error("Error:", err);
-        alert("送信に失敗しました");
     });
+
+    alert("回答ありがとうございました！");
 }
 </script>
 
