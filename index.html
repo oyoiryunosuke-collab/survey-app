@@ -46,7 +46,7 @@ function submitAnswer() {
     const formData = new FormData();
     formData.append("alpha", alpha);
 
-    fetch("https://script.google.com/macros/s/AKfycbx6cwDS9IMLQX0JOE-dBDD7FizSu_kC3wTD9VEYouuAY6LC6MdUWrGJsnKKdGdsMWFbuA/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbx6cwDS9IMLQX0JOE-dBDD7FizSu_kC3wTD9VEYouuAY6LC6MdUWrGJsnKKdGdsMWFbuA/exec, {
         method: "POST",
         body: formData
         // ⚠ Content-Type を絶対に指定しないこと
