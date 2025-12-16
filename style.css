@@ -1,0 +1,53 @@
+body {
+  font-family: sans-serif;
+  background: #fafafa;
+  color: #222;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+section {
+  margin: 60px 0;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+img {
+  width: 350px;
+  display: block;
+  margin: 20px auto;
+}
+
+input[type="range"] {
+  width: 80%;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 0.9em;
+  color: #555;
+}
