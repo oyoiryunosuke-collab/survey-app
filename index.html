@@ -22,36 +22,56 @@
     </p>
 
     <p class="note">
-      本研究の内容をご理解いただいた上で、ご同意いただける方のみご参加ください。
+      本研究以外の目的で個人情報を使用することはありません。<br>
+      本研究の内容をご理解いただいた上で、ご同意いただける方のみご参加ください。<br>
+      実施者：早稲田大学 情報生産システム研究科 荒川研究室 及位龍之介
     </p>
+
+    <p>
+      This survey is conducted as part of a <strong>research project at Waseda University</strong>.<br>
+      Under the theme of <strong>“Engineering through Words”</strong>, this study aims to clarify the relationship
+      between shape and human impressions expressed through language.
+    </p>
+    
+    <p class="note">
+      The collected data will be used solely for research purposes and will not be used for any other purpose.<br>
+      Please participate in this survey only if you understand the purpose of the study and agree to the above.<br>
+      Conducted by: Ryunosuke Oyoi, Arakawa Laboratory, Graduate School of Information, Production and Systems,
+      Waseda University
+    </p>
+    
   </section>
+
 
   <!-- ===============================
   5. プロフィール入力
   =============================== -->
   <section>
-    <h2>回答者情報</h2>
+    <h2>回答者情報(Respondent Information)</h2>
 
-    <label>ニックネーム</label>
+    <label>ニックネーム(NickName)</label>
     <input type="text" id="name">
 
-    <label>性別</label>
+    <label>性別(gender)</label>
     <select id="gender">
       <option value="">選択してください</option>
-      <option value="M">男性</option>
-      <option value="F">女性</option>
+      <option value="男性">男性(M)</option>
+      <option value="女性">女性(F)</option>
     </select>
 
-    <label>年代</label>
+    <label>年代(age)</label>
     <select id="age">
       <option value="">選択してください</option>
-      <option value="10s">10代</option>
-      <option value="20s">20代</option>
-      <option value="30s">30代</option>
-      <option value="40s">40代</option>
-      <option value="50s">50代</option>
-      <option value="60s">60代以上</option>
+      <option value="10代未満">10代未満(Under 10s)</option>
+      <option value="10代">10代(10s)</option>
+      <option value="20代">20代(20s)</option>
+      <option value="30代">30代(30s)</option>
+      <option value="40代">40代(40s)</option>
+      <option value="50代">50代(50s)</option>
+      <option value="60代">60代以上(60s and older)
+      </option>
     </select>
+
   </section>
 
 
@@ -61,17 +81,27 @@
   <section>
     <h2>操作方法</h2>
     <ol>
-      <li>スライダーを動かして、好みの形を選択してください。</li>
-      <li>形状の印象に合う言葉を選んでください。</li>
-      <li>プロフィールを入力し、送信してください。</li>
+      <li>スライダーを操作し、ご自身の好みに合う形状の<strong>輪郭</strong>を作成してください。</li>
+      <li>作成した輪郭の印象に最も近い言葉を選択してください。</li>
+      <li>内容を確認のうえ、送信してください。</li>
     </ol>
+
+
+    <h2>Instructions</h2>
+    <ol>
+      <li>Use the slider to adjust the shape and create an outline that best matches your preference.</li>
+      <li>Select the word that best describes your impression of the created outline.</li>
+      <li>Review your selections and submit your response.</li>
+    </ol>
+    
   </section>
 
   <!-- ===============================
   3. 形状選択
   ===============================  -->
   <section class="center">
-    <h2>形状の選択</h2>
+    <h2>輪郭の調整 (Outline Adjustment)</h2>
+
 
     <img id="morphImage" src="morph_frames/morph_000.png" alt="Morphing shape">
 
@@ -103,7 +133,7 @@
   6. 送信
   =============================== -->
   <section class="center">
-    <button id="submitBtn">回答を送信</button>
+    <button id="submitBtn">回答を送信(Submit Response)</button>
   </section>
 
 </div>
