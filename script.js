@@ -26,12 +26,11 @@ submitBtn.onclick = () => {
     "https://docs.google.com/forms/d/e/1FAIpQLScZVpW-JOWAQhF7QFdypK_TjTjDm3vWAptT5UxrAwVLUJ8b2A/formResponse";
 
   const formData = new FormData();
-  formData.append("entry.965325963", alpha);
-  // 必要に応じて追加
-  // formData.append("entry.xxxxx", name);
-  // formData.append("entry.yyyyy", gender);
-  // formData.append("entry.zzzzz", age);
-  // formData.append("entry.aaaaa", adjective);
+    formData.append("entry.694318826", name);
+    formData.append("entry.238313639", gender);
+    formData.append("entry.953704070", age);
+    formData.append("entry.965325963", alpha);
+    formData.append("entry.2049649696", adjective);
 
   fetch(formUrl, {
     method: "POST",
