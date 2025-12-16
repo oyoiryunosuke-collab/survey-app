@@ -18,7 +18,8 @@ submitBtn.onclick = () => {
   const adjective = document.getElementById("adjective").value;
 
   if (!name || !gender || !age || !adjective) {
-    alert("すべての項目に回答してください。");
+    alert("すべての項目に回答してください。\nPlease answer all questions.");
+;
     return;
   }
 
@@ -38,5 +39,6 @@ submitBtn.onclick = () => {
     body: formData
   });
 
-  alert("ご協力ありがとうございました！");
+  alert("ご協力ありがとうございました！\nThank you for your participation!");
+;
 };
