@@ -1,65 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>Morphing Survey</title>
-<style>
-  body { text-align: center; font-family: sans-serif; }
-  img { width: 350px; height: auto; }
-</style>
+  <meta charset="UTF-8">
+  <title>Morphing Survey</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+<div class="container">
 
-<h2>どの形がいちばん好みですか？</h2>
+  <!-- ===============================
+  1. 研究背景・同意説明
+  =============================== -->
+  <section>
+    <h1>形状評価アンケート</h1>
 
-<p>スライダーを動かして、好きな形を選んでください</p>
+    <p>
+      本アンケートは、<strong>早稲田大学の研究プロジェクト</strong>の一環として実施しています。<br>
+      「<strong>言葉によるエンジニアリング</strong>」というテーマのもと、
+      人が言葉で評価する印象と形状の関係を明らかにすることを目的としています。
+    </p>
 
-<img id="morphImage" src="morph_frames/morph_000.png">
+    <p class="note">
+      本研究の内容をご理解いただいた上で、ご同意いただける方のみご参加ください。
+    </p>
+  </section>
 
-<br><br>
+  <!-- ===============================
+  2. 操作説明
+  =============================== -->
+  <section>
+    <h2>操作方法</h2>
+    <ol>
+      <li>スライダーを動かして、好みの形を選択してください。</li>
+      <li>形状の印象に合う言葉を選んでください。</li>
+      <li>プロフィールを入力し、送信してください。</li>
+    </ol>
+  </section>
 
-<input type="range" id="slider" min="0" max="100" value="0">
+  <!-- ===============================
+  3. 形状選択
+  =============================== -->
+  <section class="center">
+    <h2>形状の選択</h2>
 
-<p>選択中： <span id="alphaValue">0</span>%</p>
+    <img id="morphImage" src="morph_frames/morph_000.png" alt="Morphing shape">
 
-<button onclick="submitAnswer()">回答を送信</button>
+    <input type="range" id="slider" min="0" max="100" value="0">
 
-<script>
-const slider = document.getElementById("slider");
-const img = document.getElementById("morphImage");
-const alphaText = document.getElementById("alphaValue");
+    <p>選択中： <strong><span id="alphaValue">0</span>%</strong></p>
+  </section>
 
-// スライダー動作
-slider.oninput = () => {
-    alphaText.textContent = slider.value;
-    img.src = `morph_frames/morph_${String(slider.value).padStart(3, "0")}.png`;
-};
+  <!-- ===============================
+  4. 印象評価
+  =============================== -->
+  <section>
+    <h2>印象評価</h2>
 
-// ===============================
-// ★ Googleフォームへ直接送信（CORS 100%回避）
-// ===============================
-function submitAnswer() {
-    const alpha = slider.value;
+    <label>この形状の印象を一言で表すと？</label>
+    <select id="adjective">
+      <option value="">選択してください</option>
+      <option value="cute">かわいい</option>
+      <option value="cool">かっこいい</option>
+      <option value="sturdy">頑丈そう</option>
+      <option value="fast">速そう</option>
+      <option value="luxury">高級な</option>
+      <option value="familiar">親しみのある</option>
+    </select>
+  </section>
 
-    // ★ あなたの Google フォームの formResponse URL
-    const formUrl =
-      "https://docs.google.com/forms/d/e/1FAIpQLScZVpW-JOWAQhF7QFdypK_TjTjDm3vWAptT5UxrAwVLUJ8b2A/formResponse";
+  <!-- ===============================
+  5. プロフィール入力
+  =============================== -->
+  <section>
+    <h2>回答者情報</h2>
 
-    const formData = new FormData();
+    <label>ニックネーム</label>
+    <input type="text" id="name">
 
-    // ★ あなたのフォームの entry ID（alpha を送る欄）
-    formData.append("entry.965325963", alpha);
+    <label>性別</label>
+    <select id="gender">
+      <option value="">選択してください</option>
+      <option value="M">男性</option>
+      <option value="F">女性</option>
+    </select>
 
-    // ★ Googleフォームは CORS 無視なので no-cors でOK
-    fetch(formUrl, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-    });
+    <label>年代</label>
+    <select id="age">
+      <option value="">選択してください</option>
+      <option value="10s">10代</option>
+      <option value="20s">20代</option>
+      <option value="30s">30代</option>
+      <option value="40s">40代</option>
+      <option value="50s">50代</option>
+      <option value="60s">60代以上</option>
+    </select>
+  </section>
 
-    alert("回答ありがとうございました！");
-}
-</script>
+  <!-- ===============================
+  6. 送信
+  =============================== -->
+  <section class="center">
+    <button id="submitBtn">回答を送信</button>
+  </section>
 
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
