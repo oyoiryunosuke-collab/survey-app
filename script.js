@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formData.append("entry.694318826", name);
       formData.append("entry.238313639", gender);
       formData.append("entry.953704070", age);
-      formData.append("entry..356466293", nationality);
+      formData.append("entry.356466293", nationality);
       formData.append("entry.965325963", alpha);
       formData.append("entry.2049649696", adjective);
       
